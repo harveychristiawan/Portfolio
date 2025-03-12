@@ -21,7 +21,7 @@ const ProfileText = ({ visible, titleId }) => (
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       I&apos;m Harvey, currently enrolled at{' '}
-      <Link href="https://binus.ac.id/">Binus University</Link> pursuing a Bachelor's
+      <Link href="https://binus.ac.id/">Binus University</Link> pursuing a Bachelor&apos;s
       Degree in Computer Science. Passionate about technology, my curiosity drives me to
       continuously learn and adapt to new advancements in the IT field.
     </Text>
