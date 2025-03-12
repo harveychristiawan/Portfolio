@@ -1,6 +1,10 @@
 # Personal portfolio
+<p align="center">
+  <img src="/public/favicon.svg" width="50" alt="Logo" />
+</p>
+<h1 align="center">Personal portfolio</h1>
 
-[![Site preview](/public/site-preview.png)](https://mayankjain25.netlify.app)
+[Site preview](https://mayankjain25.netlify.app)
 
 This is my personal portfolio website to showcase some of my projects as well as my interests.
 
@@ -34,7 +38,7 @@ npm run dev
 
 ## Deployment [![Netlify Status](https://api.netlify.com/api/v1/badges/d07f3b07-070a-41d7-bf4e-becc24e52a11/deploy-status)](https://app.netlify.com/sites/mayankjain25/deploys)
 
-This site has been deployed on Netlify. You can visit it [here](https://mayankjain25.netlify.app)
+This site has been deployed on Netlify. You can visit it [here](https://harveychristiawan.netlify.app)
 
 ## License
 
