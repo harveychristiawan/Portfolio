@@ -36,7 +36,7 @@ Once it's done start up a local server with:
 npm run dev
 ```
 
-## Deployment [![Netlify Status](https://api.netlify.com/api/v1/badges/d07f3b07-070a-41d7-bf4e-becc24e52a11/deploy-status)](https://app.netlify.com/sites/mayankjain25/deploys)
+## Deployment [![Netlify Status](https://api.netlify.com/api/v1/badges/ecd2d2e5-9556-4402-8edd-2aa95fcb684a/deploy-status)](https://app.netlify.com/sites/harveychristiawan/deploys))
 
 This site has been deployed on Netlify. You can visit it [here](https://harveychristiawan.netlify.app)
 
