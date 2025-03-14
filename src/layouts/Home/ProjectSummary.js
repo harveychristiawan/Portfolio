@@ -33,7 +33,6 @@ export const ProjectSummary = ({
   const { width } = useWindowSize();
   const titleId = `${id}-title`;
   const isMobile = width <= media.tablet;
-  // const svgOpacity = theme.themeId === 'light' ? 0.7 : 1;
   const indexText = index < 10 ? `0${index}` : index;
   const phoneSizes = `(max-width: ${media.tablet}px) 30vw, 20vw`;
   const laptopSizes = `(max-width: ${media.tablet}px) 80vw, 40vw`;
@@ -79,11 +78,13 @@ export const ProjectSummary = ({
       <Text className={styles.description} data-visible={visible} as="p">
         {description}
       </Text>
-      <div className={styles.button} data-visible={visible}>
-        <Button iconHoverShift href={buttonLink} iconEnd="arrowRight">
-          {buttonText}
-        </Button>
-      </div>
+      {buttonText && buttonLink && (
+        <div className={styles.button} data-visible={visible}>
+          <Button iconHoverShift href={buttonLink} iconEnd="arrowRight">
+            {buttonText}
+          </Button>
+        </div>
+      )}
     </div>
   );
 
@@ -91,7 +92,6 @@ export const ProjectSummary = ({
     <div className={styles.preview}>
       {model.type === 'laptop' && (
         <>
-          {/* {renderKatakana('laptop', visible)} */}
           <div className={styles.model} data-device="laptop">
             <Model
               alt={model.alt}
@@ -101,10 +101,8 @@ export const ProjectSummary = ({
               models={[
                 {
                   ...deviceModels.laptop,
-                  texture: {
-                    ...model.textures[0],
-                    sizes: laptopSizes,
-                  },
+                  texture: model.textures[0],
+                  textures: model.textures,
                 },
               ]}
             />
@@ -113,7 +111,6 @@ export const ProjectSummary = ({
       )}
       {model.type === 'phone' && (
         <>
-          {/* {renderKatakana('phone', visible)} */}
           <div className={styles.model} data-device="phone">
             <Model
               alt={model.alt}
@@ -124,18 +121,40 @@ export const ProjectSummary = ({
                 {
                   ...deviceModels.phone,
                   position: { x: -0.6, y: 1.1, z: 0 },
-                  texture: {
-                    ...model.textures[0],
-                    sizes: phoneSizes,
-                  },
+                  texture: model.textures[0],
+                  textures: model.textures,
                 },
                 {
                   ...deviceModels.phone,
                   position: { x: 0.6, y: -0.5, z: 0.3 },
-                  texture: {
-                    ...model.textures[1],
-                    sizes: phoneSizes,
-                  },
+                  texture: model.textures[0],
+                  textures: model.textures,
+                },
+              ]}
+            />
+          </div>
+        </>
+      )}
+      {model.type === 'combined' && (
+        <>
+          <div className={styles.model} data-device="phone">
+            <Model
+              alt={model.alt}
+              cameraPosition={{ x: 0, y: 0, z: 11.5 }}
+              showDelay={300}
+              show={visible}
+              models={[
+                {
+                  ...deviceModels.phone,
+                  position: { x: -1.5, y: 1.1, z: 0 },
+                  texture: model.textures[0],
+                  textures: model.textures,
+                },
+                {
+                  ...deviceModels.laptop,
+                  position: { x: 0.4, y: -0.5, z: 1 },
+                  texture: model.textures[0],
+                  textures: model.textures,
                 },
               ]}
             />

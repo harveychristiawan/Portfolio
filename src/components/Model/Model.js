@@ -364,8 +364,68 @@ const Device = ({
   show,
 }) => {
   const [loadDevice, setLoadDevice] = useState();
+  const [currentTextureIndex, setCurrentTextureIndex] = useState(0);
+  const textureTimerRef = useRef(null);
   const reduceMotion = useReducedMotion();
   const placeholderScreen = createRef();
+  const screenNode = useRef();
+  const textureCache = useRef([]);
+
+  const switchTexture = useCallback(
+    async nextIndex => {
+      if (!screenNode.current || !textureCache.current[nextIndex]) return;
+
+      const oldMaterial = screenNode.current.material;
+      const newMaterial = oldMaterial.clone();
+
+      newMaterial.map = textureCache.current[nextIndex];
+      newMaterial.opacity = 0;
+
+      screenNode.current.material = newMaterial;
+
+      // Use a spring-based transition
+      animate(0, 1, {
+        type: 'spring',
+        stiffness: 80, // Controls bounce
+        damping: 20, // Reduces overshoot
+        mass: 1, // Natural weight feel
+        restSpeed: 0.001,
+        restDelta: 0.001,
+        onUpdate: value => {
+          newMaterial.opacity = value;
+          oldMaterial.opacity = 1 - value; // Smooth fade-out of old texture
+          renderFrame();
+        },
+        onComplete: () => {
+          screenNode.current.material = newMaterial;
+        },
+      });
+
+      setCurrentTextureIndex(nextIndex);
+    },
+    [renderFrame]
+  );
+
+  // Function to cycle through textures
+  const cycleTexture = useCallback(() => {
+    if (!model.textures || model.textures.length <= 1) return;
+
+    const nextIndex = (currentTextureIndex + 1) % model.textures.length;
+    switchTexture(nextIndex);
+  }, [currentTextureIndex, model.textures, switchTexture]);
+
+  // Set up texture cycling timer
+  useEffect(() => {
+    if (model.textures && model.textures.length > 1 && show) {
+      textureTimerRef.current = setInterval(cycleTexture, 4000);
+    }
+
+    return () => {
+      if (textureTimerRef.current) {
+        clearInterval(textureTimerRef.current);
+      }
+    };
+  }, [cycleTexture, model.textures, show]);
 
   useEffect(() => {
     const applyScreenTexture = async (texture, node) => {
@@ -388,8 +448,14 @@ const Device = ({
       let loadFullResTexture;
       let playAnimation;
 
+      // Check if we have multiple textures
+      const hasMultipleTextures = model.textures && model.textures.length > 1;
+
+      // Use first texture or the provided texture
+      const initialTexture = hasMultipleTextures ? model.textures[0] : texture;
+
       const [placeholder, gltf] = await Promise.all([
-        await textureLoader.loadAsync(texture.placeholder.src),
+        await textureLoader.loadAsync(initialTexture.placeholder.src),
         await modelLoader.loadAsync(url),
       ]);
 
@@ -402,6 +468,9 @@ const Device = ({
         }
 
         if (node.name === MeshType.Screen) {
+          // Store reference to screen node
+          screenNode.current = node;
+
           // Create a copy of the screen mesh so we can fade it out
           // over the full resolution screen texture
           placeholderScreen.current = node.clone();
@@ -413,9 +482,40 @@ const Device = ({
           applyScreenTexture(placeholder, placeholderScreen.current);
 
           loadFullResTexture = async () => {
-            const image = await resolveSrcFromSrcSet(texture);
-            const fullSize = await textureLoader.loadAsync(image);
-            await applyScreenTexture(fullSize, node);
+            if (hasMultipleTextures) {
+              // Preload all textures
+              const textureLoadPromises = model.textures.map(async (tex, idx) => {
+                const image = await resolveSrcFromSrcSet(tex);
+                const fullTexture = await textureLoader.loadAsync(image);
+
+                // Prepare the texture with same settings
+                fullTexture.encoding = sRGBEncoding;
+                fullTexture.flipY = false;
+                fullTexture.anisotropy = renderer.current.capabilities.getMaxAnisotropy();
+                fullTexture.generateMipmaps = false;
+
+                // Cache the texture for later use
+                textureCache.current[idx] = fullTexture;
+
+                // Initialize the texture in renderer
+                await renderer.current.initTexture(fullTexture);
+
+                return fullTexture;
+              });
+
+              // Wait for all textures to load
+              await Promise.all(textureLoadPromises);
+
+              // Apply the first texture
+              node.material.color = new Color(0xffffff);
+              node.material.transparent = true;
+              node.material.map = textureCache.current[0];
+            } else {
+              // Original single texture logic
+              const image = await resolveSrcFromSrcSet(initialTexture);
+              const fullSize = await textureLoader.loadAsync(image);
+              await applyScreenTexture(fullSize, node);
+            }
 
             animate(1, 0, {
               onUpdate: value => {

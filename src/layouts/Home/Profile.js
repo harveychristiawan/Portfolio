@@ -60,9 +60,9 @@ export const Profile = ({ id, visible, sectionRef }) => {
                 className={styles.button}
                 data-visible={visible}
                 href="/contact"
-                icon="send"
+                icon="arrowRight"
               >
-                Send me a message
+                Get in touch with me
               </Button>
             </div>
             <div className={styles.column}>

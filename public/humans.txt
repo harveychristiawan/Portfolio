@@ -1,7 +1,7 @@
-__  __  __
-\ \ \ \ \/
- \ \/\ \
-  \/  \/
+ _    _ 
+| |__| |
+|  __  |
+|_|  |_|
 
 The humans.txt file explains the team, technology,
 and graphic assets behind this site humanstxt.org.
@@ -18,8 +18,7 @@ Figma
 Photoshop
 Blender
 
-twitter.com/hamishmw
-github.com/hamishmw
+github.com/harveychristiawan
 
 _______________________________________________________________________________
 
