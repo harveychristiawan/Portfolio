@@ -98,6 +98,10 @@
     top: 6%;
     left: 14%;
 
+    @nest .summary[data-alternate='true'] & {
+      left: -14%; /* Adjust this value as needed */
+    }
+
     @media (--mediaDesktop) {
       --width: 180%;
     }
@@ -107,6 +111,10 @@
 
       top: 10%;
       left: 0;
+
+      @nest .summary[data-alternate='true'] & {
+        left: 0; /* Reset for tablet view since you're stacking vertically */
+      }
     }
   }
 

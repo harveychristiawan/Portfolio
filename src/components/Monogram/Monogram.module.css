@@ -1,25 +1,28 @@
-.monogramContainer {
-  position: relative;
-  display: inline-block;
-}
-
 .monogram {
-  display: block;
-  transition: filter var(--durationL) ease;
+  fill: var(--colorTextTitle);
+  transition: fill var(--durationL) ease;
 }
 
-.underline {
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: rgb(var(--rgbAccent));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--durationM) var(--bezierFastoutSlowin);
-}
+.highlight {
+  fill: rgb(var(--rgbAccent));
+  opacity: 0;
+  transform: scale3d(1, 0, 1);
+  transform-origin: top;
+  transition: opacity 0.1s ease var(--durationM);
 
-.monogramContainer:hover .underline {
-  transform: scaleX(1);
+  @media (--mediaUseMotion) {
+    transition: transform var(--durationM) var(--bezierFastoutSlowin),
+      opacity 0.1s ease var(--durationM);
+  }
+
+  @nest :is(a:focus, a:hover, .monogram:hover) & {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+    transform-origin: bottom;
+    transition: opacity 0.1s ease;
+
+    @media (--mediaUseMotion) {
+      transition: transform var(--durationM) var(--bezierFastoutSlowin), opacity 0.1s ease;
+    }
+  }
 }

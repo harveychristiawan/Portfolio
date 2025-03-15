@@ -6,6 +6,6 @@ addons.setConfig({
     ...themes.dark,
     // brandImage: 'https://hamishw.com/icon.svg',
     brandTitle: 'Harvey Christiawan Components',
-    brandUrl: 'https://mayankjain.cf',
+    brandUrl: 'https://harveychristiawan.netlify.app',
   },
 });
