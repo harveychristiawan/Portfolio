@@ -12,6 +12,7 @@ import { Footer } from 'components/Footer';
 import { Meta } from 'components/Meta';
 import { Intro } from 'layouts/Home/Intro';
 import { Profile } from 'layouts/Home/Profile';
+import { Experience } from 'layouts/Home/Experience';
 import { ProjectSummary } from 'layouts/Home/ProjectSummary';
 import { useEffect, useRef, useState } from 'react';
 import styles from './Home.module.css';
@@ -32,9 +33,18 @@ export const Home = () => {
   const projectThree = useRef();
   const projectFour = useRef();
   const details = useRef();
+  const experience = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, details];
+    const sections = [
+      intro,
+      projectOne,
+      projectTwo,
+      projectThree,
+      projectFour,
+      details,
+      experience,
+    ];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -82,6 +92,11 @@ export const Home = () => {
         sectionRef={details}
         visible={visibleSections.includes(details.current)}
         id="details"
+      />
+      <Experience
+        sectionRef={experience}
+        visible={visibleSections.includes(experience.current)}
+        id="experience"
       />
       <ProjectSummary
         id="project-1"

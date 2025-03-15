@@ -30,7 +30,7 @@ export const Contact = () => {
               as="h1"
               style={getDelay(tokens.base.durationXS, initDelay)}
             >
-              <DecoderText text="Let's Connect" start={visible} delay={300} />
+              <DecoderText text="Let's Connect!" start={visible} delay={300} />
             </Heading>
 
             <div className={styles.contactInfo}>
