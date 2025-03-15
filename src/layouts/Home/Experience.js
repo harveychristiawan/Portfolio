@@ -111,8 +111,8 @@ const ExperienceText = ({ visible, titleId }) => (
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       My professional journey includes internships, work experience, and roles within
-      university organizations. I've developed a diverse set of skills in both soft and
-      hard skills.
+      university organizations. I&apos;ve developed a diverse set of skills in both soft
+      and hard skills.
     </Text>
   </Fragment>
 );
