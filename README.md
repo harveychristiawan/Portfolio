@@ -4,7 +4,7 @@
 </p>
 <h1 align="center">Personal portfolio</h1>
 
-[![Site preview](/public/site-preview.png)](https://harveychristiawan.netlify.app)
+[![Site preview](/public/site-previe.png)](https://harveychristiawan.netlify.app)
 
 This is my personal portfolio website to showcase some of my projects as well as my interests.
 
