@@ -214,7 +214,7 @@ export const Experience = ({ id, visible, sectionRef }) => {
                   secondary
                   className={styles.button}
                   data-visible={visible}
-                  href="/resume.pdf"
+                  href="/resume"
                   icon="arrowRight"
                 >
                   Full Resume

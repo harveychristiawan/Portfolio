@@ -102,7 +102,6 @@
   }
 }
 
-/* New experience grid layout */
 .experienceGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -130,7 +129,6 @@
   }
 }
 
-/* Experience card for the grid layout */
 .experienceCard {
   background-color: rgba(var(--rgbBackground), 0.8);
   border-radius: var(--borderRadiusM);
@@ -165,7 +163,7 @@
   transition-duration: var(--durationM);
   transition-delay: 1.3s;
   margin-bottom: var(--spaceXS);
-  order: -1; /* This moves the text above the divider */
+  order: -1;
 }
 
 .tagText[data-visible='true'] {
@@ -184,7 +182,6 @@
   width: 100%;
 }
 
-/* New company row styling for logo positioning */
 .companyRow {
   display: flex;
   justify-content: space-between;
@@ -194,7 +191,7 @@
 }
 
 .companyLogoContainer {
-  flex-shrink: 0;
+  flex-shrink: 0 0 40px;
   width: 40px;
   height: 40px;
   border-radius: var(--borderRadiusS);
@@ -213,18 +210,15 @@
   object-fit: contain;
 }
 
-/* Added theme-responsive icon styles */
 .themeIcon {
   fill: currentColor;
   color: #000;
 }
 
-/* Use a class-based selector for dark mode that your app applies to a parent element */
 .experience .themeIcon {
-  color: #000; /* Default for light mode */
+  color: #000;
 }
 
-/* Fix for dark mode using your app's dark mode class */
 .darkMode .themeIcon,
 [data-theme='dark'] .themeIcon {
   color: #fff;
@@ -238,6 +232,10 @@
 
 .experienceCompany {
   font-weight: var(--fontWeightMedium);
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  max-width: calc(100% - 60px);
 }
 
 .experienceDuration {
@@ -254,7 +252,6 @@
   margin: var(--spaceXL) 0;
 }
 
-/* Skills section styling */
 .skillsSection {
   width: 100%;
 }
@@ -314,7 +311,6 @@
   border-color: rgba(var(--rgbPrimary), 0.3);
 }
 
-/* Updated skill card styles to include icons */
 .skillContent {
   display: flex;
   flex-direction: column;
@@ -407,16 +403,22 @@
 
 @media (--mediaMobile) {
   .companyRow {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 
   .skillsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .experienceCompany {
+    max-width: calc(100% - 50px);
+  }
+
   .companyLogoContainer {
     width: 32px;
     height: 32px;
+    flex: 0 0 32px;
+    margin-left: var(--spaceS);
   }
 
   .content {
