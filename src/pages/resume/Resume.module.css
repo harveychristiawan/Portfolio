@@ -1,0 +1,131 @@
+.resume {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: var(--spaceXL) var(--spaceL);
+}
+
+.title {
+  margin-bottom: var(--spaceL);
+  text-align: center;
+}
+
+.resumeContainer {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: var(--spaceL);
+  background-color: var(--colorBackgroundLight);
+  border-radius: var(--borderRadiusL);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.pdfWrapper {
+  width: 100%;
+  height: 80vh;
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--borderRadiusM);
+  overflow: hidden;
+  margin-bottom: var(--spaceL);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.pdfViewer {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.fallbackContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spaceXL);
+  background-color: var(--colorBackgroundLight);
+}
+
+.fallbackIcon {
+  font-size: 4rem;
+  color: var(--colorTextLight);
+  margin-bottom: var(--spaceM);
+}
+
+.fallbackContainer h3 {
+  margin-bottom: var(--spaceM);
+  color: var(--colorText);
+}
+
+.fallbackContainer p {
+  margin-bottom: var(--spaceL);
+  max-width: 400px;
+  color: var(--colorTextLight);
+}
+
+.fallbackButton {
+  margin-top: var(--spaceM);
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spaceL);
+  padding: var(--spaceM) 0;
+}
+
+.downloadButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spaceS);
+  padding: var(--spaceM) var(--spaceL);
+  background-color: var(--colorPrimary);
+  color: var(--colorBackground);
+  border: none;
+  border-radius: var(--borderRadiusS);
+  font-weight: var(--fontWeightMedium);
+  cursor: pointer;
+  transition: all var(--durationM) ease;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.downloadButton:hover,
+.downloadButton:focus {
+  color: #00bcd4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.downloadButton svg {
+  font-size: 1.4em;
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: var(--spaceXL);
+}
+
+@media (max-width: 696px) {
+  .resumeContainer {
+    padding: var(--spaceM);
+  }
+
+  .pdfWrapper {
+    height: 70vh;
+  }
+
+  .downloadButton {
+    padding: var(--spaceS) var(--spaceM);
+    font-size: 1rem;
+  }
+}
