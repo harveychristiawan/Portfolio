@@ -41,10 +41,6 @@ npm run dev
 
 This site has been deployed on Netlify. You can visit it [here](https://harveychristiawan.netlify.app)
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ---
 
 Thank you for visiting my personal portfolio website! I hope you find it informative and enjoyable. If you have any questions or feedback, please don't hesitate to reach out.

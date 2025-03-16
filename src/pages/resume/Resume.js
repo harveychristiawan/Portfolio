@@ -2,44 +2,20 @@ import { Footer } from 'components/Footer';
 import { Meta } from 'components/Meta';
 import { Section } from 'components/Section';
 import { Transition } from 'components/Transition';
+import { PdfViewer } from 'components/PdfViewer';
 import styles from './Resume.module.css';
 import { MdFileDownload, MdErrorOutline } from 'react-icons/md';
-import { useEffect, useState, useRef } from 'react';
+import { useState } from 'react';
 
 export const Resume = () => {
-  const [pdfUrl, setPdfUrl] = useState('/CV.pdf');
-  const [pdfLoaded, setPdfLoaded] = useState(true);
-  const iframeRef = useRef(null);
+  const [pdfUrl] = useState('/CV.pdf');
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pdfError, setPdfError] = useState(false);
 
-  useEffect(() => {
-    const iframe = iframeRef.current;
-    if (!iframe) return;
-
-    const checkPdfLoaded = () => {
-      try {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
-
-        if (
-          !iframeDoc ||
-          iframeDoc.body.innerHTML.includes('error') ||
-          iframeDoc.body.innerHTML === ''
-        ) {
-          setPdfLoaded(false);
-        }
-      } catch (e) {
-        setPdfLoaded(false);
-      }
-    };
-
-    const timer = setTimeout(checkPdfLoaded, 3000);
-
-    iframe.addEventListener('load', checkPdfLoaded);
-
-    return () => {
-      clearTimeout(timer);
-      iframe.removeEventListener('load', checkPdfLoaded);
-    };
-  }, []);
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
 
   const handleDownload = () => {
     const link = document.createElement('a');
@@ -50,6 +26,9 @@ export const Resume = () => {
     document.body.removeChild(link);
   };
 
+  const goToPrevPage = () => setPageNumber(prev => Math.max(prev - 1, 1));
+  const goToNextPage = () => setPageNumber(prev => Math.min(prev + 1, numPages || 1));
+
   return (
     <Section className={styles.resume}>
       <Meta title="Resume" description="My Resume" />
@@ -59,14 +38,37 @@ export const Resume = () => {
           <>
             <div className={styles.resumeContainer}>
               <div className={styles.pdfWrapper}>
-                {pdfLoaded ? (
-                  <iframe
-                    ref={iframeRef}
-                    src={`${pdfUrl}#view=FitH`}
-                    className={styles.pdfViewer}
-                    title="Resume PDF"
-                    onError={() => setPdfLoaded(false)}
-                  />
+                {!pdfError ? (
+                  <>
+                    <PdfViewer
+                      pdfUrl={pdfUrl}
+                      pageNumber={pageNumber}
+                      onLoadSuccess={onDocumentLoadSuccess}
+                      onLoadError={() => setPdfError(true)}
+                    />
+
+                    {numPages > 1 && (
+                      <div className={styles.pdfNavigation}>
+                        <button
+                          onClick={goToPrevPage}
+                          disabled={pageNumber <= 1}
+                          className={styles.pdfNavButton}
+                        >
+                          Previous
+                        </button>
+                        <p className={styles.pdfPageInfo}>
+                          Page {pageNumber} of {numPages}
+                        </p>
+                        <button
+                          onClick={goToNextPage}
+                          disabled={pageNumber >= numPages}
+                          className={styles.pdfNavButton}
+                        >
+                          Next
+                        </button>
+                      </div>
+                    )}
+                  </>
                 ) : (
                   <div className={styles.fallbackContainer}>
                     <MdErrorOutline className={styles.fallbackIcon} />
@@ -75,13 +77,6 @@ export const Resume = () => {
                       The PDF viewer couldn&apos;t load the resume. Please download the
                       file to view it.
                     </p>
-                    <button
-                      className={`${styles.downloadButton} ${styles.fallbackButton}`}
-                      onClick={handleDownload}
-                    >
-                      <MdFileDownload />
-                      <span>Download Resume</span>
-                    </button>
                   </div>
                 )}
               </div>
