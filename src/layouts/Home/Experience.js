@@ -6,8 +6,7 @@ import { Section } from 'components/Section';
 import { Text } from 'components/Text';
 import { Link } from 'components/Link';
 import { Transition } from 'components/Transition';
-import { Fragment, useState, useContext } from 'react';
-import { media } from 'utils/style';
+import { Fragment, useState } from 'react';
 import styles from './Experience.module.css';
 import Compnet from '../../components/Icon/svg/compnet.svg';
 import Prometheus from '../../components/Icon/svg/prometheus.svg';
@@ -18,8 +17,8 @@ import Javascript from '../../components/Icon/svg/javascript.svg';
 import Typescript from '../../components/Icon/svg/typescript.svg';
 import NodeIcon from '../../components/Icon/svg/nodejs.svg';
 import NextIcon from '../../components/Icon/svg/nextjs.svg';
-import Html from '../../components/Icon/svg/html.svg';
-import Css from '../../components/Icon/svg/css.svg';
+import Php from '../../components/Icon/svg/php.svg';
+import Laravel from '../../components/Icon/svg/laravel.svg';
 import Mysql from '../../components/Icon/svg/mysql.svg';
 import Postgresql from '../../components/Icon/svg/postgresql.svg';
 import Figma from '../../components/Icon/svg/figma.svg';
@@ -75,8 +74,8 @@ const skills = [
   { name: 'React', icon: 'react' },
   { name: 'Next.js', icon: 'nextjs' },
   { name: 'Node.js', icon: 'node' },
-  { name: 'HTML', icon: 'html' },
-  { name: 'CSS', icon: 'css' },
+  { name: 'PHP', icon: 'php' },
+  { name: 'Laravel', icon: 'laravel' },
   { name: 'MySQL', icon: 'mysql' },
   { name: 'PostgreSQL', icon: 'postgresql' },
   { name: 'Figma', icon: 'figma' },
@@ -91,8 +90,8 @@ const SkillIcon = ({ name }) => {
     react: ReactIcon,
     node: NodeIcon,
     nextjs: NextIcon,
-    html: Html,
-    css: Css,
+    php: Php,
+    laravel: Laravel,
     mysql: Mysql,
     postgresql: Postgresql,
     figma: Figma,

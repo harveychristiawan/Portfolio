@@ -1,4 +1,5 @@
 # Personal portfolio
+
 <p align="center">
   <img src="/public/favicon.svg" width="50" alt="Logo" />
 </p>
