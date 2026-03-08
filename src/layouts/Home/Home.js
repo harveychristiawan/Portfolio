@@ -8,6 +8,12 @@ import adexWraith from 'assets/adex-wraith.png';
 import planovHome from 'assets/planov-dashboard.png';
 import planovNotes from 'assets/planov-notes.png';
 import planovVBL from 'assets/planov-vbl.png';
+import masterplanTimer from 'assets/masterplan-timer.png';
+import masterplanDashboard from 'assets/masterplan-dashboard.png';
+import masterplanCalendar from 'assets/masterplan-calendar.png';
+import masterplanNotes from 'assets/masterplan-notes.png';
+import masterplanKanban from 'assets/masterplan-kanban.png';
+import masterplanLogin from 'assets/masterplan-login.png';
 import { Footer } from 'components/Footer';
 import { Meta } from 'components/Meta';
 import { Intro } from 'layouts/Home/Intro';
@@ -19,8 +25,8 @@ import styles from './Home.module.css';
 
 const disciplines = [
   'Full-Stack Developer',
-  'Frontend Developer',
-  'Backend Developer',
+  'Software Engineer',
+  'Gen AI Engineer',
   'Project Management',
 ];
 
@@ -103,6 +109,58 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
+        title="MasterPlan"
+        description={
+          <>
+            MasterPlan is a web-based application developed to help university students manage their time more effectively and boost their productivity in daily activities.
+            <br />
+            <br />
+            <ul style={{ margin: 0, paddingLeft: '20px' }}>
+              <li>PHP Laravel</li>
+              <li>Tailwind CSS</li>
+              <li>MySQL Database</li>
+            </ul>
+          </>
+        }
+        buttonText="View repository"
+        buttonLink="https://github.com/harveychristiawan/MasterPlan"
+        model={{
+          type: 'laptop',
+          alt: 'MasterPlan Preview',
+          textures: [
+            {
+              srcSet: [masterplanLogin],
+              placeholder: placeholderImage,
+            },
+            {
+              srcSet: [masterplanDashboard],
+              placeholder: placeholderImage,
+            },
+            {
+              srcSet: [masterplanKanban],
+              placeholder: placeholderImage,
+            },
+            {
+              srcSet: [masterplanCalendar],
+              placeholder: placeholderImage,
+            },
+            {
+              srcSet: [masterplanTimer],
+              placeholder: placeholderImage,
+            },
+            {
+              srcSet: [masterplanNotes],
+              placeholder: placeholderImage,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-2"
+        alternate
+        sectionRef={projectTwo}
+        visible={visibleSections.includes(projectTwo.current)}
+        index={2}
         title="Prime Genius Academy"
         description={
           <>
@@ -137,11 +195,10 @@ export const Home = () => {
         }}
       />
       <ProjectSummary
-        id="project-2"
-        alternate
-        sectionRef={projectTwo}
-        visible={visibleSections.includes(projectTwo.current)}
-        index={2}
+        id="project-3"
+        sectionRef={projectThree}
+        visible={visibleSections.includes(projectThree.current)}
+        index={3}
         title="Prometheus"
         description="A company profile website for Prometheus Logistics Services & Supply Chain, built using WordPress. This website showcases the company's services, expertise, and industry solutions, providing a professional online presence for clients and partners."
         buttonText="Visit website"
@@ -158,10 +215,11 @@ export const Home = () => {
         }}
       />
       <ProjectSummary
-        id="project-3"
+        id="project-4"
+        alternate
         sectionRef={projectFour}
         visible={visibleSections.includes(projectFour.current)}
-        index={3}
+        index={4}
         title="Planov"
         description={
           <>
@@ -191,43 +249,6 @@ export const Home = () => {
             },
             {
               srcSet: [planovVBL],
-              placeholder: placeholderImage,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        alternate
-        id="project-4"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={4}
-        title="Adex Legends"
-        description={
-          <>
-            Adex Legends is a web based project based on the game Apex Legends to showcase
-            the in-game characters&apos; abilities and information about the game.
-            <br />
-            <br />
-            <ul style={{ margin: 0, paddingLeft: '20px' }}>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>Javascript</li>
-            </ul>
-          </>
-        }
-        buttonText="View repository"
-        buttonLink="https://github.com/harveychristiawan/AdexLegend"
-        model={{
-          type: 'laptop',
-          alt: 'Adex Legends Preview',
-          textures: [
-            {
-              srcSet: [adexLegend],
-              placeholder: placeholderImage,
-            },
-            {
-              srcSet: [adexWraith],
               placeholder: placeholderImage,
             },
           ],

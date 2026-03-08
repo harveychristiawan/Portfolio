@@ -24,6 +24,7 @@ import Postgresql from '../../components/Icon/svg/postgresql.svg';
 import Figma from '../../components/Icon/svg/figma.svg';
 import Wordpress from '../../components/Icon/svg/wordpress.svg';
 import Office from '../../components/Icon/svg/office.svg';
+import Python from '../../components/Icon/svg/python.svg';
 
 const experiences = [
   {
@@ -80,7 +81,7 @@ const skills = [
   { name: 'PostgreSQL', icon: 'postgresql' },
   { name: 'Figma', icon: 'figma' },
   { name: 'Wordpress', icon: 'wordpress' },
-  { name: 'Office', icon: 'office' },
+  { name: 'Python', icon: 'python' },
 ];
 
 const SkillIcon = ({ name }) => {
@@ -96,7 +97,7 @@ const SkillIcon = ({ name }) => {
     postgresql: Postgresql,
     figma: Figma,
     wordpress: Wordpress,
-    office: Office,
+    python: Python,
   };
 
   const Icon = iconMap[name.toLowerCase()];

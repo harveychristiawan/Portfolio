@@ -8,7 +8,7 @@ import { MdFileDownload, MdErrorOutline } from 'react-icons/md';
 import { useState } from 'react';
 
 export const Resume = () => {
-  const [pdfUrl] = useState('/CV.pdf');
+  const [pdfUrl] = useState('/Resume.pdf');
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [pdfError, setPdfError] = useState(false);

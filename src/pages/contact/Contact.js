@@ -38,14 +38,6 @@ export const Contact = () => {
                 <MdOutlineEmail /> harveych.18@gmail.com
               </a>
               <a
-                href="https://wa.me/6281317872357"
-                className={styles.contactLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MdWhatsapp /> +62 813 1787 2357
-              </a>
-              <a
                 href="https://www.linkedin.com/in/harvey-christiawan-0325a81a7/"
                 target="_blank"
                 rel="noopener noreferrer"

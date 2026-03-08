@@ -20,17 +20,16 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there👋" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I&apos;m Harvey, currently enrolled at{' '}
-      <Link href="https://binus.ac.id/">Binus University</Link> pursuing a Bachelor&apos;s
-      Degree in Computer Science. Passionate about technology, my curiosity drives me to
-      continuously learn and adapt to new advancements in the IT field.
+      I&apos;m Harvey, a Computer Science graduate from{' '}
+      <Link href="https://binus.ac.id/">Binus University</Link> with a strong passion for technology and continuous learning. 
+      My curiosity and adaptability drive me to stay updated with the latest advancements in the IT field. 
+      I&apos;ve gained valuable experience through internships, work opportunities, and active involvement in 
+      Himpunan Mahasiswa Teknik Informatika (HIMTI) at Binus University.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I have had previous internship and work experiences as well as organization
-      experiences in Himpunan Teknik Informatika (HIMTI) Binus University. I am eager to
-      start my career and open to opportunities in Frontend / Backend Development,
-      Application / Web Development, Data Science, Project Management and other
-      technology-related roles.
+    I&apos;m now looking to kickstart my professional career and am open to opportunities in 
+    Frontend & Backend Development, Application & Web Development, Gen AI Engineer, Data Science, Project Management, 
+    and other tech-driven roles.
     </Text>
   </Fragment>
 );
