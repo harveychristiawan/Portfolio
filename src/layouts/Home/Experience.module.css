@@ -410,6 +410,18 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .skillCard{
+    aspect-ratio: auto;
+    min-height: 96px;
+  }
+
+  .buttonContainer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: var(--spaceL);
+  }
+
   .experienceCompany {
     max-width: calc(100% - 50px);
   }
