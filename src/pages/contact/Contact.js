@@ -34,8 +34,8 @@ export const Contact = () => {
             </Heading>
 
             <div className={styles.contactInfo}>
-              <a href="mailto:harveych.18@gmail.com" className={styles.contactLink}>
-                <MdOutlineEmail /> harveych.18@gmail.com
+              <a href="mailto:harveych.22@gmail.com" className={styles.contactLink}>
+                <MdOutlineEmail /> harveych.22@gmail.com
               </a>
               <a
                 href="https://www.linkedin.com/in/harvey-christiawan-0325a81a7/"
